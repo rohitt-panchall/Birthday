@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday 💕</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Countdown + celebrate button (shows until birthday) -->
+  <div id="countdown-screen">
+    <span class="float-heart" aria-hidden="true">💜</span>
+    <span class="float-heart" aria-hidden="true">💕</span>
+    <span class="float-heart" aria-hidden="true">💗</span>
+    <span class="float-heart" aria-hidden="true">💜</span>
+    <span class="float-heart" aria-hidden="true">💕</span>
+    <span class="float-heart" aria-hidden="true">💗</span>
+    <p class="countdown-heading" id="countdown-heading">Counting down to my fav Ritul Shirwadkar Panchal's special day</p>
+    <p class="countdown-text" id="countdown-text">Something sweet is coming… 🎂</p>
+    <div class="countdown-timer" id="countdown-timer">
+      <div class="countdown-unit">
+        <span class="countdown-number" id="countdown-hours">--</span>
+        <span class="countdown-label">hours</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="countdown-mins">--</span>
+        <span class="countdown-label">mins</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="countdown-secs">--</span>
+        <span class="countdown-label">secs</span>
+      </div>
+    </div>
+    <p class="countdown-midnight">A special midnight celebration awaits🌙</p>
+    <button type="button" class="btn-celebrate btn-celebrate--disabled" id="btn-celebrate" disabled>
+      Let's celebrate🎀
+    </button>
+  </div>
+
+  <main id="main-content">
+    <canvas id="confetti-canvas"></canvas>
+
+    <section class="hero">
+      <h1 class="hero-title">Happy Birthday</h1>
+      <p class="hero-name">Majhi Puranpoli!!!</p>
+      <p class="hero-subtitle">Hanuman Ji Always Bless YOU!! and US!!❤️🧿</p>
+      <p class="scroll-hint">Scroll down for more ↓</p>
+    </section>
+
+    <section class="message">
+      <div class="message-card">
+        <h2>A little note for you</h2>
+        <p class="message-text">
+          Happiest Birthday DUGGU!!🎀🎉🎊🎂
+          May god bless you with the best always and wishing you a brighter year ahead bubu!!💋 you know it all that i m always here for you my love! Its your first birthday for us together and having youuu is the best part of my life!!❤️🧿
+          I love you so much  the way you are and all i want to say that i m veryyyy Lucky to have you Bachha!
+          you have no idea the happiness you have into my life.. you gave me soo mnay things and i want to gibe you everythingg!❤️
+          I love your yaps and i love every thing about you!! you are the best thing that has happened to me!!!
+          Millions of people  in the world and still WE met!😭❤️🧿🫂
+        </p>
+        <p class="message-sign">— With love, YOUR BABY
+        </p>
+      </div>
+    </section>
+
+    <section class="memories">
+      <h2>Some of our cute moments</h2>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="assets/moment1.png" alt="Our moment together">
+        </div>
+        <div class="gallery-item gallery-item-video">
+          <video src="assets/moment-video.mp4" controls muted loop playsinline autoplay aria-label="Our moment video"></video>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/moment2.png" alt="Beach moment">
+        </div>
+      </div>
+      <button type="button" class="btn-surprise">Here is the surprise 🎁</button>
+    </section>
+
+    <footer class="footer">
+      <p>Made with love for you · Happy Birthday! 🎂</p>
+    </footer>
+  </main>
+
+  <!-- Surprise screen (opens when "Here is the surprise" is tapped) -->
+  <div id="surprise-screen" class="surprise-screen hidden">
+    <button type="button" class="btn-close-surprise" id="btn-close-surprise" aria-label="Close">✕</button>
+    <div class="surprise-content">
+      <button type="button" class="btn-lights" id="btn-lights">💡Turn off the lights💡</button>
+    </div>
+    <!-- Night mode: play music button (top) -->
+    <button type="button" class="btn-play-music" id="btn-play-music" aria-label="Play music">🎵 Play music</button>
+
+    <!-- Slice hint (appears 5s after lights off) -->
+    <p class="slice-hint" id="slice-hint">slice the cake with ur finger</p>
+
+    <!-- Night mode: cake (bottom) -->
+    <div class="cake-touch-zone" id="cake-touch-zone">
+      <div class="night-cake" id="night-cake" aria-hidden="true">
+        <div class="cake-top">
+          <span class="candle"></span>
+          <span class="candle"></span>
+          <span class="candle"></span>
+        </div>
+        <div class="cake-tier cake-tier-1"></div>
+        <div class="cake-tier cake-tier-2"></div>
+        <div class="cake-base"></div>
+      </div>
+      <!-- Split cake halves (shown when sliced) -->
+      <div class="cake-split-container" id="cake-split-container">
+        <div class="cake-half cake-half-l"></div>
+        <div class="cake-half cake-half-r"></div>
+      </div>
+    </div>
+
+    <!-- YAYYY pop-up (appears when cake is sliced) -->
+    <div class="yayyy-text" id="yayyy-text">YAYYY!</div>
+
+    <!-- Birthday message (appears 2s after YAYYY) -->
+    <p class="birthday-again-text" id="birthday-again-text">Happy birthday again baby! 💕</p>
+
+    <!-- Night mode: glowing dots (colorful small shining dots) -->
+    <div class="night-glowing-dots" aria-hidden="true">
+      <span class="glow-dot" style="--i:0;--x:8%;--y:12%"></span>
+      <span class="glow-dot" style="--i:1;--x:22%;--y:8%"></span>
+      <span class="glow-dot" style="--i:2;--x:38%;--y:15%"></span>
+      <span class="glow-dot" style="--i:3;--x:55%;--y:10%"></span>
+      <span class="glow-dot" style="--i:4;--x:72%;--y:18%"></span>
+      <span class="glow-dot" style="--i:5;--x:88%;--y:12%"></span>
+      <span class="glow-dot" style="--i:6;--x:12%;--y:35%"></span>
+      <span class="glow-dot" style="--i:7;--x:45%;--y:32%"></span>
+      <span class="glow-dot" style="--i:8;--x:78%;--y:38%"></span>
+      <span class="glow-dot" style="--i:9;--x:5%;--y:55%"></span>
+      <span class="glow-dot" style="--i:10;--x:30%;--y:58%"></span>
+      <span class="glow-dot" style="--i:11;--x:60%;--y:52%"></span>
+      <span class="glow-dot" style="--i:12;--x:92%;--y:60%"></span>
+      <span class="glow-dot" style="--i:13;--x:18%;--y:78%"></span>
+      <span class="glow-dot" style="--i:14;--x:50%;--y:75%"></span>
+      <span class="glow-dot" style="--i:15;--x:82%;--y:82%"></span>
+    </div>
+
+    <!-- Night mode: decorations -->
+    <div class="night-decorations">
+      <div class="banner">
+        <div class="banner-line">
+          <span class="banner-letter">H</span>
+          <span class="banner-letter">A</span>
+          <span class="banner-letter">P</span>
+          <span class="banner-letter">P</span>
+          <span class="banner-letter">Y</span>
+        </div>
+        <div class="banner-line">
+          <span class="banner-letter">B</span>
+          <span class="banner-letter">I</span>
+          <span class="banner-letter">R</span>
+          <span class="banner-letter">T</span>
+          <span class="banner-letter">H</span>
+          <span class="banner-letter">D</span>
+          <span class="banner-letter">A</span>
+          <span class="banner-letter">Y</span>
+        </div>
+      </div>
+      <span class="float-heart-n">💕</span>
+      <span class="float-heart-n">💗</span>
+      <span class="float-heart-n">💜</span>
+    </div>
+  </div>
+
+  <audio id="birthday-audio" preload="auto">
+    <source src="./assets/birthdaysong.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
